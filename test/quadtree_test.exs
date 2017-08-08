@@ -50,4 +50,18 @@ defmodule QuadTreeTest do
 
       assert quadtree_result == list_result
   end
+
+  test "Example" do
+    # Create objects and a viewport
+    object1 = Rectangle.create(x: 110, y: 55, width: 2, height: 3)
+    object2 = Rectangle.create(x: 250, y: 130, width: 10, height: 10)
+    viewport = Rectangle.create(x: 100, y: 50, width: 64, height: 64)
+    # Create a 500x500 quadtree and add the object
+    # Then get a list of items within the viewport
+    QuadTree.create(width: 500, height: 500)
+      |> QuadTree.insert(object1)
+      |> QuadTree.insert(object2)
+      |> QuadTree.query(viewport)
+      |> IO.inspect
+  end
 end
